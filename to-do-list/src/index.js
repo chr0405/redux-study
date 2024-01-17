@@ -14,10 +14,13 @@ const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO :
       // ...state는 ES6로 모든 state array의 contents를 의미
-      return [{text : action.text, id: Date.now() }, ...state];
+      const newToDoObj = {text : action.text, id: Date.now() }
+      return [newToDoObj, ...state];
+
     case DELETE_TODO :
-      // filter()
-      return state.filter(toDo => toDo.id !== action.id);
+      // filter()는 자바 스크립트
+      const cleaned = state.filter(toDo => toDo.id !== action.id);
+      return cleaned;
     default :
       return state;
   }
